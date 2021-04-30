@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
         Integer i = 0;
+        Integer x = 2;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
