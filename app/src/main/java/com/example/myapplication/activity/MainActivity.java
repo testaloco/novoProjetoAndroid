@@ -3,7 +3,8 @@ package com.example.myapplication.activity;
 import android.os.Bundle;
 
 import com.example.myapplication.R;
-import com.example.myapplication.ui.main.intcontroladora.PageAdapterFragment;
+import com.example.myapplication.adapter.PageAdapterFragment;
+
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(new PageAdapterFragment(getSupportFragmentManager(), this));
+        viewPager.setAdapter(new PageAdapterFragment(getSupportFragmentManager()));
 
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
