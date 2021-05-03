@@ -1,6 +1,12 @@
 package com.example.myapplication.util;
 
+import android.util.Log;
+
+import com.example.myapplication.model.CovidBrasil;
 import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,11 +14,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class Util {
 
-    private static final String URL_COVID = "https://covid19-brazil-api.now.sh/api/report/v1";
+    public static final String URL_COVID = "https://covid19-brazil-api.now.sh/api/report/v1";
 
     public static String unmask(String s, Set<String> replaceSymbols) {
 
@@ -85,6 +93,22 @@ public class Util {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void JSONtoEstadoCovid(String jsonString, ArrayList<CovidBrasil> listaCovidBrasil){
+        try{
+            CovidBrasil covidBrasil;
+            JSONObject mainObj = new JSONObject(jsonString);
+            JSONArray listaJson = mainObj.getJSONArray("data");
+
+            for(int i = 0; i < listaJson.length(); i++){
+                covidBrasil = new CovidBrasil();
+                covidBrasil.setEstado(listaJson.getJSONObject(i).getString("uf"));
+                listaCovidBrasil.add(covidBrasil);
+            }
+        }catch (Exception e){
+            Log.e("ERROR","Error ",e);
+        }
     }
 
 

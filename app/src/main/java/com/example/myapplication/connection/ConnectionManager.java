@@ -6,43 +6,55 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.myapplication.model.CovidBrasil;
 import com.example.myapplication.util.Util;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class ConnectionManager {
-    /**
-     * Executa GET de forma assincrona ao servidor
-     */
-    public static void executeGETAsync(Context context, String url) throws Exception{
+    private ArrayList<CovidBrasil> listaCovidBrasil;
 
-        new AsyncTask<Object, Void, String>(){
+    public ConnectionManager(ArrayList<CovidBrasil> listaCovidBrasil){
+        this.listaCovidBrasil = listaCovidBrasil;
+    }
 
-            @Override
-            protected String doInBackground(Object... params) {
-                HttpURLConnection urlConnection = null;
-                try {
-                    urlConnection = (HttpURLConnection) new URL((String)params[0]).openConnection();
-                    urlConnection.setRequestMethod("GET");
-                    urlConnection.setRequestProperty("accept", "application/json");
-                    urlConnection.connect();
+    public void recuperarValoresEstados(){
+        new RecuperarEstadosCovid().execute();
+    }
+    private class RecuperarEstadosCovid extends AsyncTask<Void, Void, String> {
+        @Override
+        protected String doInBackground(Void... params) {
+            HttpURLConnection urlConnection = null;
+            try {
+                URL url = new URL(Util.URL_COVID);
 
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("GET");
+                urlConnection.connect();
 
-                    urlConnection.getResponseCode();
-                    /*da para desirilizar aqui*/
-                    String response = Util.webToString(urlConnection.getInputStream());
+                String result = Util.webToString(urlConnection.getInputStream());
 
-                    return response ;
-                } catch (Exception e) {
-                    Log.e("Error", "Error ", e);
-                    return null;
-                } finally{
-                    if (urlConnection != null) {
-                        urlConnection.disconnect();
-                    }
+                return result;
+            } catch (Exception e) {
+                Log.e("Error", "Error ", e);
+                return null;
+            } finally{
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
                 }
             }
-        }.execute(url);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Util.JSONtoEstadoCovid(s,listaCovidBrasil);
+            if(listaCovidBrasil == null || listaCovidBrasil.isEmpty()){
+                Log.e("ERROR","Deu ao deserializar");
+            }
+        }
     }
+
 }
