@@ -95,7 +95,7 @@ public class Util {
         return null;
     }
 
-    public static void JSONtoEstadoCovid(String jsonString, ArrayList<CovidBrasil> listaCovidBrasil){
+    public static void JSONtoEstadoCovid(String jsonString, ArrayList<CovidBrasil> covidBrasilArrayList){
         try{
             CovidBrasil covidBrasil;
             JSONObject mainObj = new JSONObject(jsonString);
@@ -104,7 +104,7 @@ public class Util {
             for(int i = 0; i < listaJson.length(); i++){
                 covidBrasil = new CovidBrasil();
                 covidBrasil.setEstado(listaJson.getJSONObject(i).getString("uf"));
-                listaCovidBrasil.add(covidBrasil);
+                covidBrasilArrayList.add(covidBrasil);
             }
         }catch (Exception e){
             Log.e("ERROR","Error ",e);

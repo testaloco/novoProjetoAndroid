@@ -27,7 +27,7 @@ public class CovidAdapter extends ArrayAdapter<CovidBrasil> {
         CovidBrasil covidBrasil = covidBrasilLista.get(position);
 
         if(view == null)
-            view = LayoutInflater.from(context).inflate(R.layout.covid_adapter, null);
+            view = LayoutInflater.from(context).inflate(R.layout.fragment_pesquisa, null);
 
         TextView ufNome = (TextView) view.findViewById(R.id.textViewNomeEstado);
         ufNome.setText(covidBrasil.getEstado());
