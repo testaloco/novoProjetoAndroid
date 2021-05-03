@@ -17,6 +17,7 @@ import com.example.myapplication.model.CovidBrasil;
 import com.example.myapplication.util.Util;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +35,7 @@ public class InformacoesFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Object List;
 
     public InformacoesFragment() {
         // Required empty public constructor
@@ -63,6 +65,9 @@ public class InformacoesFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            Object listaEstados;
+           // CovidAdapter covidAdapter =new CovidAdapter(this, );
+
         }
 
 

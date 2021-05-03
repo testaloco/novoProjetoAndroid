@@ -10,7 +10,7 @@
         android:layout_width="256dp"
         android:layout_height="24dp"
         android:layout_marginStart="20dp"
-        android:text="Procurar Estado:"
+        android:text="Selecione:"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="38dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/listViewListaEstados" />
 
     <RadioButton
-        android:id="@+id/radioButton3"
+        android:id="@+id/btnRadio3"
         android:layout_width="188dp"
         android:layout_height="30dp"
         android:layout_marginTop="4dp"
@@ -54,12 +54,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <RadioButton
-        android:id="@+id/radioButton5"
+        android:id="@+id/btnRadio5"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="Menor Numero de Casos"
-        app:layout_constraintStart_toStartOf="@+id/radioButton3"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton3" />
+        app:layout_constraintStart_toStartOf="@+id/btnRadio3"
+        app:layout_constraintTop_toBottomOf="@+id/btnRadio3" />
 
     <TextView
         android:id="@+id/textView4"
@@ -69,11 +69,11 @@
         android:text="Suspeitos:"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/radioButton5"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton5" />
+        app:layout_constraintStart_toStartOf="@+id/btnRadio5"
+        app:layout_constraintTop_toBottomOf="@+id/btnRadio5" />
 
     <RadioButton
-        android:id="@+id/radioButton6"
+        android:id="@+id/btnRadio6"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginTop="4dp"
@@ -82,12 +82,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <RadioButton
-        android:id="@+id/radioButton7"
+        android:id="@+id/btnRadio7"
         android:layout_width="150dp"
         android:layout_height="33dp"
         android:text="Menor Numero"
-        app:layout_constraintStart_toStartOf="@+id/radioButton6"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton6" />
+        app:layout_constraintStart_toStartOf="@+id/btnRadio6"
+        app:layout_constraintTop_toBottomOf="@+id/btnRadio6" />
 
     <Button
         android:id="@+id/btnLimpar"
@@ -97,7 +97,7 @@
         android:layout_marginTop="20dp"
         android:text="Limpar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton7" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRadio7" />
 
     <Button
         android:id="@+id/btnPesquisar"
@@ -109,7 +109,7 @@
         android:text="Pesquisar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnLimpar"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton7" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRadio7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
